@@ -1,44 +1,55 @@
+// api/ResumeService.js
 import axios from "axios";
 
 export const baseURL = "http://localhost:8080";
 
 export const axiosInstance = axios.create({
-  baseURL: baseURL,
+    baseURL: baseURL,
 });
 
-// Add Axios interceptor to include Authorization header for authenticated requests
-axiosInstance.interceptors.request.use(
-  (config) => {
+// Add request interceptor for JWT token
+axiosInstance.interceptors.request.use((config) => {
     const token = localStorage.getItem("token");
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+        config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-  },
-  (error) => Promise.reject(error)
-);
+});
 
+// Resume Generation (Public endpoint, saves if authenticated)
 export const generateResume = async (description) => {
-  try {
-    if (!description || description.trim() === "") {
-      throw new Error("Description cannot be empty");
-    }
     const response = await axiosInstance.post("/api/v1/resume/generate", {
-      userDescription: description,
+        userDescription: description,
     });
     return response.data;
-  } catch (error) {
-    console.error("Error generating resume:", error.response?.data || error.message);
-    throw error;
-  }
 };
 
+// User Registration
+export const registerUser = async (userData) => {
+    const response = await axiosInstance.post("/register", userData);
+    return response.data;
+};
+
+// User Login
+export const loginUser = async (loginData) => {
+    const response = await axiosInstance.post("/login", loginData);
+    return response.data; // Returns { user: { email, fullName }, token }
+};
+
+// Change Password (Requires authentication)
+export const changePassword = async (passwordData) => {
+    const response = await axiosInstance.post("/changePassword", passwordData);
+    return response.data;
+};
+
+// Delete User (Requires authentication)
+export const deleteUser = async (email) => {
+    const response = await axiosInstance.delete(`/users/${email}`);
+    return response.data;
+};
+
+// Get User's Resumes (Requires authentication)
 export const getUserResumes = async () => {
-  try {
     const response = await axiosInstance.get("/api/v1/resume/list");
     return response.data;
-  } catch (error) {
-    console.error("Error fetching user resumes:", error.response?.data || error.message);
-    throw error;
-  }
 };

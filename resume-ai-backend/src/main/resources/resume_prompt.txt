@@ -1,4 +1,4 @@
-Generate a professional IT job resume in JSON format based on the following description. Ensure the JSON is consistent, well-structured, and contains all specified keys, even if some values are empty or null. Use the exact keys provided below and maintain their hierarchy.
+Generate a professional IT job resume in JSON format based on the following description. CRITICAL: You must return a VALID JSON object. Do not miss any keys. If a list (like certifications) is empty, return "certifications": []. Do not return null for arrays. Use the exact keys provided below and maintain their hierarchy.
 
 Input Description:
 "{{userDescription}}"

@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ChangePassword from "./pages/ChangePassword";
 import Dashboard from "./pages/Dashboard";
+import Resume from "./pages/Resume"; // <--- CHANGE 1: Import the Resume page
 import ProtectedRoute from "./components/ProtectedRoute";
 
 createRoot(document.getElementById("root")).render(
@@ -29,12 +30,12 @@ createRoot(document.getElementById("root")).render(
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
                     <Route path="change-password" element={<ChangePassword />} />
-                    {/* The generate-resume route is now public */}
                     <Route path="generate-resume" element={<GenerateResume />} />
 
                     {/* Protected Routes */}
                     <Route element={<ProtectedRoute />}>
                         <Route path="dashboard" element={<Dashboard />} />
+                        <Route path="resume" element={<Resume />} /> {/* <--- CHANGE 2: Add the Route here */}
                     </Route>
                 </Route>
             </Routes>

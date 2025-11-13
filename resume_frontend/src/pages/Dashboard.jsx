@@ -1,6 +1,5 @@
-// pages/Dashboard.js
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Ensure useNavigate is imported
 import { deleteUser, getUserResumes } from "../api/ResumeService";
 import toast from "react-hot-toast";
 
@@ -36,6 +35,12 @@ function Dashboard() {
         fetchResumes();
     }, [navigate]);
 
+    // --- NEW FUNCTION TO HANDLE VIEW CLICK ---
+    const handleViewResume = (resume) => {
+        // We pass the resume data string to the new page via 'state'
+        navigate("/resume", { state: { resumeData: resume.resumeData } });
+    };
+
     const handleDeleteAccount = async () => {
         if (window.confirm("Are you sure you want to permanently delete your account and all your data?")) {
             try {
@@ -70,8 +75,13 @@ function Dashboard() {
                                         <div className="card-body">
                                             <h3 className="card-title">Resume - {resume.id}</h3>
                                             <div className="card-actions justify-end">
-                                                {/* We would link to a view page here in a real app */}
-                                                <button className="btn btn-primary btn-sm">View</button>
+                                                {/* --- UPDATED BUTTON --- */}
+                                                <button
+                                                    onClick={() => navigate("/resume", { state: { resumeData: resume.resumeData } })}
+                                                    className="btn btn-primary btn-sm"
+                                                >
+                                                    View
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

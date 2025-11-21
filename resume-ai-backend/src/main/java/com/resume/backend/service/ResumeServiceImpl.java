@@ -16,7 +16,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.NoSuchElementException; // Import for exception handling
+=======
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
 
 @Service
 public class ResumeServiceImpl implements ResumeService {
@@ -60,6 +63,7 @@ public class ResumeServiceImpl implements ResumeService {
         return stringObjectMap;
     }
 
+<<<<<<< HEAD
     // --- NEW DELETE METHOD IMPLEMENTATION ---
     @Override
     public void deleteResume(Long id, String email) {
@@ -75,6 +79,8 @@ public class ResumeServiceImpl implements ResumeService {
     }
     // -----------------------------------------------------------------
 
+=======
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
     String loadPromptFromFile(String filename) throws IOException {
         Path path = new ClassPathResource(filename).getFile().toPath();
         return Files.readString(path);

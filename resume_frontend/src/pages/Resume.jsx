@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import ResumePreview from "../components/Resume"; // Ensure this path is correct
+<<<<<<< HEAD
 import { FaArrowLeft } from "react-icons/fa";
+=======
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
 
 function Resume() {
   const location = useLocation();
@@ -65,6 +68,7 @@ function Resume() {
 
   // Only render the preview if we have data
   return (
+<<<<<<< HEAD
     <div className="min-h-screen bg-base-100 py-8 relative">
         {/* Close/Back Button */}
         <div className="container mx-auto px-4 mb-4">
@@ -76,6 +80,9 @@ function Resume() {
             </button>
         </div>
 
+=======
+    <div className="min-h-screen bg-base-100 py-8">
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
       <ResumePreview data={resumeData} />
     </div>
   );

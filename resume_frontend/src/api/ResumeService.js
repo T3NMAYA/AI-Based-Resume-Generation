@@ -48,11 +48,14 @@ export const deleteUser = async (email) => {
     return response.data;
 };
 
+<<<<<<< HEAD
 export const deleteResume = async (id) => {
     const response = await axiosInstance.delete(`/api/v1/resume/${id}`);
     return response.data;
 };
 
+=======
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
 // Get User's Resumes (Requires authentication)
 export const getUserResumes = async () => {
     const response = await axiosInstance.get("/api/v1/resume/list");

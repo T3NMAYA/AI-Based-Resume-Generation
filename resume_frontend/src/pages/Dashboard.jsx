@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { useNavigate, Link } from "react-router-dom";
 import { deleteUser, getUserResumes, deleteResume } from "../api/ResumeService";
 import toast from "react-hot-toast";
 import { FaTrash, FaEye } from "react-icons/fa";
+=======
+import { useNavigate, Link } from "react-router-dom"; // Ensure useNavigate is imported
+import { deleteUser, getUserResumes } from "../api/ResumeService";
+import toast from "react-hot-toast";
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
 
 function Dashboard() {
     const navigate = useNavigate();
@@ -36,6 +42,7 @@ function Dashboard() {
         fetchResumes();
     }, [navigate]);
 
+<<<<<<< HEAD
     const handleViewResume = (resume) => {
         navigate("/resume", { state: { resumeData: resume.resumeData } });
     };
@@ -52,6 +59,14 @@ function Dashboard() {
         }
     };
 
+=======
+    // --- NEW FUNCTION TO HANDLE VIEW CLICK ---
+    const handleViewResume = (resume) => {
+        // We pass the resume data string to the new page via 'state'
+        navigate("/resume", { state: { resumeData: resume.resumeData } });
+    };
+
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
     const handleDeleteAccount = async () => {
         if (window.confirm("Are you sure you want to permanently delete your account and all your data?")) {
             try {
@@ -82,6 +97,7 @@ function Dashboard() {
                         {resumes.length > 0 ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-4">
                                 {resumes.map(resume => (
+<<<<<<< HEAD
                                     <div key={resume.id} className="card bg-base-100/50 shadow-lg border border-gray-700 hover:border-primary/50 transition-all">
                                         <div className="card-body">
                                             <h3 className="card-title">Resume #{resume.id}</h3>
@@ -98,6 +114,18 @@ function Dashboard() {
                                                     className="btn btn-error btn-outline btn-sm gap-2"
                                                 >
                                                     <FaTrash /> Delete
+=======
+                                    <div key={resume.id} className="card bg-base-100/50 shadow-lg">
+                                        <div className="card-body">
+                                            <h3 className="card-title">Resume - {resume.id}</h3>
+                                            <div className="card-actions justify-end">
+                                                {/* --- UPDATED BUTTON --- */}
+                                                <button
+                                                    onClick={() => navigate("/resume", { state: { resumeData: resume.resumeData } })}
+                                                    className="btn btn-primary btn-sm"
+                                                >
+                                                    View
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
                                                 </button>
                                             </div>
                                         </div>

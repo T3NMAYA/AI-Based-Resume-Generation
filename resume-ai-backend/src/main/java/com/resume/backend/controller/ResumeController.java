@@ -46,6 +46,7 @@ public class ResumeController {
         List<Resume> resumes = resumeRepository.findByUser(user);
         return new ResponseEntity<>(resumes, HttpStatus.OK);
     }
+<<<<<<< HEAD
     
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteResume(@PathVariable Long id) {
@@ -57,4 +58,6 @@ public class ResumeController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+=======
+>>>>>>> 4482c68a67f4e62e20870c820870ee7c5d8dbcf9
 }
